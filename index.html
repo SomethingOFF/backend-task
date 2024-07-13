@@ -1,0 +1,38 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event Handling Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <h1>Click the button to Submit form</h1>
+    <button id="clickButton">SubmitForm</button>
+
+    <!-- Script to handle button click -->
+    <script>
+        $(document).ready(function () {
+            $('#clickButton').on('click', function () {
+                $.ajax({
+                    url: '/trigger-event', // Route to trigger event on server
+                    method: 'GET',
+                    success: function (response) {
+                        console.log('Event triggered on server:', response);
+                    },
+                    error: function (error) {
+                        console.error('Error triggering event:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
